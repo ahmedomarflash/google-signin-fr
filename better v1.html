@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Healthy Parental</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== Reset & Base ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #e0f7f7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    /* ===== Header ===== */
+    header h1 {
+      font-size: 3.5rem;
+      margin-bottom: 40px;
+      color: #00fff7;
+      text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7;
+      letter-spacing: 2px;
+      animation: glowPulse 2s infinite alternate;
+    }
+
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 20px #00fff7, 0 0 40px #00fff7; }
+      100% { text-shadow: 0 0 35px #00fff7, 0 0 70px #00fff7; }
+    }
+
+    /* ===== Layout ===== */
+    .content-with-images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      max-width: 1000px;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+    }
+
+    .side-column {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .side-column img {
+      width: 260px;
+      height: 160px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 0 15px #00fff7aa, 0 0 30px #00fff7cc;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      cursor: pointer;
+    }
+
+    .side-column img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 0 25px #00fff7dd, 0 0 50px #00fff7ee;
+    }
+
+    .center-text {
+      max-width: 380px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      font-weight: 600;
+      text-align: center;
+      color: #aaf0f0;
+      padding: 20px;
+      border: 2px solid #00fff7aa;
+      border-radius: 14px;
+      background: rgba(0, 255, 247, 0.07);
+      backdrop-filter: blur(4px);
+    }
+
+    /* ===== Buttons ===== */
+    .buttons {
+      margin-bottom: 35px;
+      text-align: center;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: linear-gradient(135deg, #00fff7, #00bcd4);
+      border: none;
+      padding: 15px 35px;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 12px;
+      color: #002f2f;
+      cursor: pointer;
+      box-shadow: 0 0 15px #00fff7bb;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px #00fff7ff, 0 0 45px #00bcd4ff;
+    }
+
+    /* ===== Forms ===== */
+    form {
+      background: rgba(0, 255, 247, 0.07);
+      box-shadow: 0 0 20px #00fff7bb;
+      border-radius: 16px;
+      padding: 30px 25px;
+      max-width: 350px;
+      width: 100%;
+      display: none;
+      color: #e0f7f7;
+      text-align: right;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    form.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      margin-bottom: 18px;
+      background-color: #002f2f;
+      color: #aaf0f0;
+      box-shadow: inset 0 0 10px #00fff7cc;
+      transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    }
+
+    input[type="email"]:focus,
+    input[type="password"]:focus {
+      outline: none;
+      background-color: #004c4c;
+      box-shadow: 0 0 15px #00fff7ff;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+      background: linear-gradient(135deg, #00bcd4, #00fff7);
+      border: none;
+      padding: 14px 0;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 14px;
+      cursor: pointer;
+      color: #002f2f;
+      box-shadow: 0 0 15px #00fff7cc;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px #00fff7ff, 0 0 50px #00bcd4ff;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 720px) {
+      .content-with-images {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .side-column {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .side-column img {
+        width: 90vw;
+        height: auto;
+      }
+
+      .center-text {
+        max-width: 90vw;
+        font-size: 1rem;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Healthy Parental</h1>
+  </header>
+
+  <main>
+    <!-- Images & text -->
+    <section class="content-with-images">
+      <div class="side-column">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=90" alt="Healthy food" />
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=90" alt="Family exercising" />
+      </div>
+
+      <div class="center-text">
+        <p>
+          الصحة الجيدة أساس الحياة السعيدة. اتباع نظام غذائي متوازن، ممارسة الرياضة بانتظام، والحصول على قسط كافٍ من الراحة يرفع من طاقتك ويحسن من صحتك العامة. اعتنِ بجسدك وعقلك يوميًا.
+        </p>
+      </div>
+
+      <div class="side-column">
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=500&q=90" alt="Healthy vegetables" />
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=500&q=90" alt="Outdoor running" />
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="buttons">
+      <button id="signInBtn">تسجيل الدخول</button>
+      <button id="signUpBtn">إنشاء حساب</button>
+    </section>
+
+    <!-- Sign In Form -->
+    <form id="signInForm">
+      <label for="emailSignIn">البريد الإلكتروني</label>
+      <input type="email" id="emailSignIn" placeholder="example@mail.com" required />
+
+      <label for="passwordSignIn">كلمة المرور</label>
+      <input type="password" id="passwordSignIn" placeholder="••••••••" required />
+
+      <input type="submit" value="دخول" />
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signUpForm">
+      <label for="emailSignUp">البريد الإلكتروني</label>
+      <input type="email" id="emailSignUp" placeholder="example@mail.com" required />
+
+      <label for="passwordSignUp">كلمة المرور</label>
+      <input type="password" id="passwordSignUp" placeholder="••••••••" required />
+
+      <label for="confirmPasswordSignUp">تأكيد كلمة المرور</label>
+      <input type="password" id="confirmPasswordSignUp" placeholder="••••••••" required />
+
+      <input type="submit" value="تسجيل" />
+    </form>
+  </main>
+
+  <script>
+    const signInBtn = document.getElementById('signInBtn');
+    const signUpBtn = document.getElementById('signUpBtn');
+    const signInForm = document.getElementById('signInForm');
+    const signUpForm = document.getElementById('signUpForm');
+
+    signInBtn.addEventListener('click', () => {
+      signInForm.classList.add('active');
+      signUpForm.classList.remove('active');
+      signInForm.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    signUpBtn.addEventListener('click', () => {
+      signUpForm.classList.add('active');
+      signInForm.classList.remove('active');
+      signUpForm.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    signInForm.addEventListener('submit', e => {
+      e.preventDefault();
+      alert('تم تسجيل الدخول (تجريبي)');
+    });
+
+    signUpForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const pass = document.getElementById('passwordSignUp').value;
+      const confirmPass = document.getElementById('confirmPasswordSignUp').value;
+      if (pass !== confirmPass) {
+        alert('كلمات المرور غير متطابقة');
+        return;
+      }
+      alert('تم إنشاء الحساب (تجريبي)');
+    });
+  </script>
+</body>
+</html>
